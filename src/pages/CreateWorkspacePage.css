@@ -1,0 +1,207 @@
+/* Main Container */
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.workspace-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+  }
+  
+  /* Profile Header */
+  .profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .profile-info {
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+    margin-top: 35%;
+  }
+  
+  .profile-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
+  
+  .bio {
+    text-align: left;
+  }
+  
+  .username {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: start;
+  }
+  
+  .bio-text {
+    font-size: 14px;
+    color: #555;
+    margin-top: 2px;
+    text-align: start;
+  }
+  
+  .bio-description {
+    font-size: 12px;
+    color: #777;
+    margin-top: 5px;
+    text-align: start;
+  }
+  
+  .profile-stats-follow {
+    display: flex;
+    flex-direction: column;
+   
+  }
+  
+  .profile-stats {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .stat {
+    text-align: center;
+  }
+  
+  .stat-number {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .stat-label {
+    font-size: 12px;
+    color: #777;
+    padding-left: 2px;
+  }
+  
+  .follow-button {
+    background-color: #0095f6;
+    color: #fff;
+    padding: 5px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .follow-button:hover {
+    background-color: #007acc;
+  }
+  
+  /* Stories Section */
+  .stories {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .story {
+    text-align: center;
+  }
+  
+  .story-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ddd;
+    margin: 0 auto;
+  }
+  
+  .story-label {
+    font-size: 10px;
+    color: #777;
+    margin-top: 5px;
+  }
+  
+  .workspace-icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+  }
+  
+  .workspace-icons i {
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    padding: 8px;
+    transition: color 0.3s;
+  }
+  
+  .workspace-icons i:hover {
+    color: #000;
+  }
+  
+  .workspace-icons .active-icon {
+    color: #007bff; /* Highlight the active icon */
+  }
+  
+  /* Post Grid */
+  .post-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    width: 100%;
+    margin-top: 15px;
+  }
+  
+  .post-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    background-color: #000;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .profile-photo {
+      width: 60px;
+      height: 60px;
+    }
+  
+    .stat-number {
+      font-size: 14px;
+    }
+  
+    .username {
+      font-size: 16px;
+    }
+  
+    .bio-text, .bio-description {
+      font-size: 12px;
+    }
+  
+    .story-circle {
+      width: 40px;
+      height: 40px;
+    }
+  
+    .post-grid {
+      gap: 2px;
+    }
+  }
+  
