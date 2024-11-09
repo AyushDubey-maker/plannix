@@ -29,6 +29,7 @@ const Register = () => {
     };
 
     return (
+      <div className="form-container-wrapper">
         <div className="form-container">
           <h2>Register</h2>
           <form onSubmit={handleRegister}>
@@ -56,6 +57,7 @@ const Register = () => {
           <p>
             Already have an account? <a href="/login">Login</a>
           </p>
+        </div>
         </div>
       );
     };

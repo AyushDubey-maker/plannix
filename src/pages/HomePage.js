@@ -47,7 +47,7 @@ const HomePage = ({ user }) => {
 
       {/* Footer with button */}
       <footer className="footer">
-        <button className="create-workspace-button" onClick={() => navigate("/create-workspace")}>Create New Workspace</button>
+        <button className="create-workspace-button" onClick={() => navigate("/form-workspace")}>Create New Workspace</button>
       </footer>
     </div>
   );

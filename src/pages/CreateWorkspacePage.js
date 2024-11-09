@@ -17,15 +17,7 @@ const CreateWorkspacePage = () => {
             className="profile-photo"
           />
           </div>
-          <div className="bio">
-            <h2 className="username">Plannix</h2>
-            <p className="bio-text">E-commerce Website</p>
-            <p className="bio-description">
-              Selective free resources for designers @plannix.
-              <br />
-              Tempe, Arizona
-            </p>
-          </div>
+         
         </div>
         <div className="profile-stats-follow">
           <div className="profile-stats">
@@ -45,6 +37,16 @@ const CreateWorkspacePage = () => {
           <button className="follow-button">Follow</button>
         </div>
       </header>
+
+      <div className="bio">
+            <h2 className="username">Plannix</h2>
+            <p className="bio-text">E-commerce Website</p>
+            <p className="bio-description">
+              Selective free resources for designers @plannix.
+              <br />
+              Tempe, Arizona
+            </p>
+          </div>
 
       {/* Stories section */}
       <section className="stories">

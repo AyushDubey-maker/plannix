@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth"; 
 
@@ -10,7 +10,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import HomePage from "./pages/HomePage";
 import CreateWorkspacePage from "./pages/CreateWorkspacePage";
-
+import FormWorkspace from "./pages/FormWorkspace";
 import reportWebVitals from './reportWebVitals';
 
 
@@ -38,6 +38,7 @@ const Root = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} /> {/* Always accessible */}
       <Route path="/create-workspace" element={<CreateWorkspacePage />} />
+      <Route path="/form-workspace" element={user ? <FormWorkspace user={user} /> : <Login />} />
 
       </Routes>
   );
