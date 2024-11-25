@@ -38,6 +38,7 @@ body{
     height: 80px;
     border-radius: 50%;
     margin-right: 15px;
+    object-fit: cover;
   }
   
   .bio {
@@ -163,7 +164,7 @@ body{
   }
   
   /* Post Grid */
-  .post-grid {
+  /* .post-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 3px;
@@ -176,7 +177,83 @@ body{
     height: auto;
     aspect-ratio: 1 / 1;
     background-color: #000;
-  }
+  } */
+  /* Post Grid */
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.post-slot {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.post-slot:hover {
+  transform: scale(1.05);
+}
+
+.post-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Post Actions */
+.post-actions {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.post-slot:hover .post-actions {
+  opacity: 1;
+}
+
+.post-actions i {
+  color: white;
+  font-size: 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.post-actions i:hover {
+  transform: scale(1.2);
+}
+
+.fa-plus-circle {
+  font-size: 24px;
+}
+
+.fa-edit {
+  color: #ffc107;
+}
+
+.fa-trash {
+  color: #dc3545;
+}
+
   
   /* Responsive adjustments */
   @media (max-width: 600px) {
@@ -205,5 +282,34 @@ body{
     .post-grid {
       gap: 2px;
     }
+  }
+  
+
+
+  .upload-loader {
+    position: fixed; /* Position fixed to keep it centered even when scrolling */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+    z-index: 9999; /* Ensure it appears on top of all content */
+    flex-direction: column; /* Stack loader and text vertically */
+    text-align: center; /* Center the text */
+  }
+  
+  .upload-loader p {
+    color: #fff; /* White text color */
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
   

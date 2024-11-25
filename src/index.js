@@ -22,11 +22,14 @@ const Root = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-
+      
       if (!currentUser && location.pathname !== "/login" && location.pathname !== "/register") {
         navigate("/login"); 
       }
+
     });
+
+  
 
     return () => unsubscribe(); 
   }, [navigate, location]);
@@ -37,8 +40,8 @@ const Root = () => {
       <Route path="/" element={user ? <HomePage user={user} /> : <Login />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} /> {/* Always accessible */}
-      <Route path="/create-workspace" element={<CreateWorkspacePage />} />
       <Route path="/form-workspace" element={user ? <FormWorkspace user={user} /> : <Login />} />
+      <Route path="/create-workspace/:workspaceId"element={user ? <CreateWorkspacePage user={user} /> : <Login />}/>      
 
       </Routes>
   );
