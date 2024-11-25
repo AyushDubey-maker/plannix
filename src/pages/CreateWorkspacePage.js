@@ -30,6 +30,9 @@ const CreateWorkspacePage = ({ user }) => {
   const [uploading, setUploading] = useState(false); // Upload loader state
   const [workspacePosts, setWorkspacePosts] = useState(posts);
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  // const [isClicked, setIsClicked] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -74,6 +77,39 @@ const CreateWorkspacePage = ({ user }) => {
 
     fetchWorkspaceDetailsAndPosts();
   }, [workspaceId]);
+
+
+  useEffect(() => {
+    // Handler to toggle between mobile and desktop modes
+    const handleResize = () => {
+      const mobile = window.innerWidth <= 768;
+      setIsMobile(mobile);
+
+      // Reset clicked state when switching to desktop
+      if (!mobile) {
+        setClickedIndex(null);
+      }
+    };
+
+    handleResize(); // Initial screen size check
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  // const handleClick = () => {
+  //   if (isMobile) {
+  //     setIsClicked(!isClicked);
+  //   }
+  // };
+  const [clickedIndex, setClickedIndex] = useState(null); // Track which post is clicked
+  const handleClick = (index) => {
+    if (isMobile) {
+      setClickedIndex(clickedIndex === index ? null : index); // Toggle click visibility
+    }
+  };
 
   // Handle logout
   const handleLogout = async () => {
@@ -339,10 +375,11 @@ const CreateWorkspacePage = ({ user }) => {
       </div>
 
       {/* Post grid */}
-          {/* Post grid */}
-          <div className="post-grid">
+          {/* <div className="post-grid">
             {workspacePosts.map((post, index) => (
-              <div className="post-slot" key={index}>
+              <div className={`post-slot ${isMobile ? 'clickable' : 'hoverable'}`} key={index}
+              onClick={isMobile ? handleClick : undefined}
+              >
                 {post === null ? (
                   <>
                     <img
@@ -350,7 +387,7 @@ const CreateWorkspacePage = ({ user }) => {
                       alt={`Empty slot ${index + 1}`}
                       className="post-image"
                     />
-                    <div className="post-actions">
+                    <div className={`post-actions ${isMobile ? (isClicked ? 'visible' : '') : ''}`}>
                       <i
                         className="fas fa-plus-circle"
                         onClick={() => handleUpload(index)}
@@ -371,17 +408,83 @@ const CreateWorkspacePage = ({ user }) => {
                     title="Edit Post"
                     onClick={() => handleEdit(index)} // Connect the edit button to the edit function
                   ></i>
-                      <i
-                        className="fas fa-trash"
-                        onClick={() => handleDelete(index)}
-                        title="Delete Post"
-                      ></i>
+                    <i
+                    className="fas fa-trash"
+                    onClick={() => {
+                      if (window.confirm("Are you sure you want to delete this post?")) {
+                        handleDelete(index);
+                      }
+                    }}
+                    title="Delete Post"
+                  ></i>
                     </div>
                   </>
                 )}
               </div>
             ))}
-          </div>
+          </div> */}
+    <div className="post-grid">
+      {workspacePosts.map((post, index) => (
+        <div
+          className={`post-slot ${isMobile ? "clickable" : "hoverable"}`}
+          key={index}
+          onClick={() => handleClick(index)}
+        >
+          {post === null ? (
+            <>
+              <img
+                src="https://via.placeholder.com/150"
+                alt={`Empty slot ${index + 1}`}
+                className="post-image"
+              />
+              <div
+                className={`post-actions ${
+                  isMobile && clickedIndex === index ? "visible" : ""
+                }`}
+              >
+                <i
+                  className="fas fa-plus-circle"
+                  onClick={() => handleUpload(index)}
+                  title="Add Post"
+                ></i>
+              </div>
+            </>
+          ) : (
+            <>
+              <img
+                src={post}
+                alt={`Post ${index + 1}`}
+                className="post-image"
+              />
+              <div
+                className={`post-actions ${
+                  isMobile && clickedIndex === index ? "visible" : ""
+                }`}
+              >
+                <i
+                  className="fas fa-edit"
+                  onClick={() => handleEdit(index)}
+                  title="Edit Post"
+                ></i>
+                <i
+                  className="fas fa-trash"
+                  onClick={() => {
+                    if (
+                      window.confirm(
+                        "Are you sure you want to delete this post?"
+                      )
+                    ) {
+                      handleDelete(index);
+                    }
+                  }}
+                  title="Delete Post"
+                ></i>
+              </div>
+            </>
+          )}
+        </div>
+      ))}
+    </div>
  
     </>
   ) : (
@@ -401,6 +504,11 @@ const CreateWorkspacePage = ({ user }) => {
 };
 
 export default CreateWorkspacePage;
+
+
+
+
+
 
 
 
