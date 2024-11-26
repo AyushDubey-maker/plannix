@@ -337,4 +337,20 @@ body{
   
 
 
+  .add-more-posts-button {
+    display: block;
+    margin: 0 auto;
+    background: #0095f6;
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 3%;
+  }
   
+  .add-more-posts-button:hover {
+    background-color: #0177c6;
+  }

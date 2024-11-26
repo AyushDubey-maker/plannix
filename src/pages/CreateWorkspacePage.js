@@ -21,7 +21,7 @@ import {
 import imageCompression from "browser-image-compression"; // For image compression
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-const posts = Array(15).fill(null); // Default array of null posts
+const posts = []; // Default array of null posts
 
 const CreateWorkspacePage = ({ user }) => {
   const { workspaceId } = useParams();
@@ -57,7 +57,7 @@ const CreateWorkspacePage = ({ user }) => {
         const postsCollectionRef = collection(db, `workspaces/${workspaceId}/posts`);
         const postsSnapshot = await getDocs(postsCollectionRef);
 
-        const fetchedPosts = Array(15).fill(null); // Ensure a 15-slot array
+        const fetchedPosts = [];
         postsSnapshot.forEach((doc) => {
           const data = doc.data();
           if (data.slot !== undefined && data.imageUrl) {
@@ -65,7 +65,12 @@ const CreateWorkspacePage = ({ user }) => {
           }
         });
 
-        setWorkspacePosts(fetchedPosts);
+                // Ensure slots are contiguous (fill missing slots with null)
+                const normalizedPosts = Array(Math.max(fetchedPosts.length, 15))
+                .fill(null)
+                .map((_, i) => fetchedPosts[i] || null);
+      
+              setWorkspacePosts(normalizedPosts);
 
       } catch (error) {
         console.error("Error fetching workspace data:", error);
@@ -294,6 +299,9 @@ const CreateWorkspacePage = ({ user }) => {
   
 
   const userInitial = user?.email ? user.email[0].toUpperCase() : "?";
+  const handleAddMorePosts = () => {
+    setWorkspacePosts((prev) => [...prev, null]);
+  };
 
 
   return (
@@ -375,54 +383,6 @@ const CreateWorkspacePage = ({ user }) => {
       </div>
 
       {/* Post grid */}
-          {/* <div className="post-grid">
-            {workspacePosts.map((post, index) => (
-              <div className={`post-slot ${isMobile ? 'clickable' : 'hoverable'}`} key={index}
-              onClick={isMobile ? handleClick : undefined}
-              >
-                {post === null ? (
-                  <>
-                    <img
-                      src="https://via.placeholder.com/150"
-                      alt={`Empty slot ${index + 1}`}
-                      className="post-image"
-                    />
-                    <div className={`post-actions ${isMobile ? (isClicked ? 'visible' : '') : ''}`}>
-                      <i
-                        className="fas fa-plus-circle"
-                        onClick={() => handleUpload(index)}
-                        title="Add Post"
-                      ></i>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <img
-                      src={post}
-                      alt={`Post ${index + 1}`}
-                      className="post-image"
-                    />
-                    <div className="post-actions">
-                    <i
-                    className="fas fa-edit"
-                    title="Edit Post"
-                    onClick={() => handleEdit(index)} // Connect the edit button to the edit function
-                  ></i>
-                    <i
-                    className="fas fa-trash"
-                    onClick={() => {
-                      if (window.confirm("Are you sure you want to delete this post?")) {
-                        handleDelete(index);
-                      }
-                    }}
-                    title="Delete Post"
-                  ></i>
-                    </div>
-                  </>
-                )}
-              </div>
-            ))}
-          </div> */}
     <div className="post-grid">
       {workspacePosts.map((post, index) => (
         <div
@@ -485,7 +445,9 @@ const CreateWorkspacePage = ({ user }) => {
         </div>
       ))}
     </div>
- 
+    <button className="add-more-posts-button" onClick={handleAddMorePosts}>
+        + Add More Posts
+      </button>
     </>
   ) : (
     <></>
