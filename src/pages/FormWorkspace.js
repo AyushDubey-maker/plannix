@@ -53,7 +53,7 @@ const FormWorkspace = ({ user }) => {
 
       // Optimize the profile photo if it exceeds 5MB
       if (profilePhoto && profilePhoto.size > 5 * 1024 * 1024) {
-        console.log("Original image size:", (profilePhoto.size / (1024 * 1024)).toFixed(2), "MB");
+        //console.log("Original image size:", (profilePhoto.size / (1024 * 1024)).toFixed(2), "MB");
 
         const compressedPhoto = await imageCompression(profilePhoto, {
           maxSizeMB: 1, // Compress to ~1MB
@@ -61,7 +61,7 @@ const FormWorkspace = ({ user }) => {
           useWebWorker: true, // Use web workers for better performance
         });
 
-        console.log("Compressed image size:", (compressedPhoto.size / (1024 * 1024)).toFixed(2), "MB");
+        //console.log("Compressed image size:", (compressedPhoto.size / (1024 * 1024)).toFixed(2), "MB");
         setProfilePhoto(compressedPhoto); // Update the profile photo with the optimized version
       
           const storageRef = ref(storage, `workspaces/${workspaceId}/profilePhoto`);

@@ -134,13 +134,13 @@ const CreateWorkspacePage = ({ user }) => {
           let finalImage = file;
 
           if (file.size > 5 * 1024 * 1024) {
-            console.log("Original image size:", (file.size / (1024 * 1024)).toFixed(2), "MB");
+            //console.log("Original image size:", (file.size / (1024 * 1024)).toFixed(2), "MB");
             finalImage = await imageCompression(file, {
               maxSizeMB: 1, // Compress to ~1MB
               maxWidthOrHeight: 1920, // Resize for large dimensions
               useWebWorker: true, // Use web workers for better performance
             });
-            console.log("Compressed image size:", (finalImage.size / (1024 * 1024)).toFixed(2), "MB");
+            //console.log("Compressed image size:", (finalImage.size / (1024 * 1024)).toFixed(2), "MB");
           }
 
           const storageRef = ref(storage, `workspaces/${workspaceId}/posts/post_${index}`);
@@ -191,7 +191,7 @@ const CreateWorkspacePage = ({ user }) => {
   
           // Compress the image (same logic as for uploading)
           if (file.size > 5 * 1024 * 1024) { // If the image is larger than 5MB
-            console.log("Original image size:", (file.size / (1024 * 1024)).toFixed(2), "MB");
+           // console.log("Original image size:", (file.size / (1024 * 1024)).toFixed(2), "MB");
   
             const compressedImage = await imageCompression(file, {
               maxSizeMB: 1, // Compress to ~1MB
@@ -199,7 +199,7 @@ const CreateWorkspacePage = ({ user }) => {
               useWebWorker: true, // Use web workers for better performance
             });
   
-            console.log("Compressed image size:", (compressedImage.size / (1024 * 1024)).toFixed(2), "MB");
+           // console.log("Compressed image size:", (compressedImage.size / (1024 * 1024)).toFixed(2), "MB");
   
             // Replace the image in Firebase Storage
             const storageRef = ref(storage, `workspaces/${workspaceId}/posts/post_${index}`);
