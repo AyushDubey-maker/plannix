@@ -163,21 +163,7 @@ body{
     color: #007bff; /* Highlight the active icon */
   }
   
-  /* Post Grid */
-  /* .post-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3px;
-    width: 100%;
-    margin-top: 15px;
-  }
-  
-  .post-image {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1 / 1;
-    background-color: #000;
-  } */
+
   /* Post Grid */
 .post-grid {
   display: grid;

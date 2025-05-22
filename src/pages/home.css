@@ -26,12 +26,12 @@
 }
 
 a.plannix {
-  all: unset; /* Resets all inherited and applied styles */
-  color: inherit; /* Inherits text color from the parent */
-  font-size: inherit; /* Inherits font size from the parent */
-  font-weight: inherit; /* Inherits font weight from the parent */
+  all: unset; 
+  color: inherit;
+  font-size: inherit; 
+  font-weight: inherit; 
   cursor: pointer; 
-  text-decoration: none; /* Ensures no underline is applied */
+  text-decoration: none; 
 }
 
 /* Profile container */
@@ -259,18 +259,18 @@ a.plannix {
 
 
   .header .app-name {
-    font-size: 18px; /* Smaller font size for app name */
+    font-size: 18px; 
   }
 
   .header .profile-icon {
-    font-size: 16px; /* Reduce font size inside icon */
-    width: 30px; /* Smaller icon size */
-    height: 30px; /* Smaller icon size */
+    font-size: 16px; 
+    width: 30px; 
+    height: 30px; 
   }
 
   .header .logout-button {
-    font-size: 14px; /* Smaller button text */
-    padding: 3px 8px; /* Reduce button padding */
+    font-size: 14px; 
+    padding: 3px 8px; 
   }
 
   .image-grid {

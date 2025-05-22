@@ -16,23 +16,7 @@
     margin-bottom: 20px;
   }
   
-  /* header h2 {
-    font-size: 1.5em;
-  }
-  
-  header button {
-    background-color: #007bff;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  header button:hover {
-    background-color: #0056b3;
-  } */
-  
+
   form {
     display: flex;
     flex-direction: column;
