@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth, db, storage } from "../firebase"; 
+import placeholder_img from '../assets/placeholder.png'
 import { 
   collection, 
   doc, 
@@ -331,7 +332,7 @@ const CreateWorkspacePage = ({ user }) => {
         <div className="profile-info">
           <div>
             <img
-              src={workspaceDetails.profilePhotoURL ? workspaceDetails.profilePhotoURL : "https://via.placeholder.com/100"}
+              src={workspaceDetails.profilePhotoURL ? workspaceDetails.profilePhotoURL : {placeholder_img}}
               alt="Profile"
               className="profile-photo"
             />
@@ -393,7 +394,7 @@ const CreateWorkspacePage = ({ user }) => {
           {post === null ? (
             <>
               <img
-                src="https://via.placeholder.com/150"
+                src={placeholder_img}
                 alt={`Empty slot ${index + 1}`}
                 className="post-image"
               />

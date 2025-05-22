@@ -13,39 +13,74 @@ import CreateWorkspacePage from "./pages/CreateWorkspacePage";
 import FormWorkspace from "./pages/FormWorkspace";
 import reportWebVitals from './reportWebVitals';
 
+import Loader from "./components/Loader";
 
 const Root = () => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const location = useLocation(); 
+  const location = useLocation();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      
-      if (!currentUser && location.pathname !== "/login" && location.pathname !== "/register") {
-        navigate("/login"); 
-      }
+      setLoading(false);
 
+      if (!currentUser && location.pathname !== "/login" && location.pathname !== "/register") {
+        navigate("/login");
+      }
     });
 
-  
-
-    return () => unsubscribe(); 
+    return () => unsubscribe();
   }, [navigate, location]);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <Routes>
-      {/* <Route path="/" element={<App />} /> */}
       <Route path="/" element={user ? <HomePage user={user} /> : <Login />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} /> {/* Always accessible */}
+      <Route path="/register" element={<Register />} />
       <Route path="/form-workspace" element={user ? <FormWorkspace user={user} /> : <Login />} />
-      <Route path="/create-workspace/:workspaceId"element={user ? <CreateWorkspacePage user={user} /> : <Login />}/>      
-
-      </Routes>
+      <Route path="/create-workspace/:workspaceId" element={user ? <CreateWorkspacePage user={user} /> : <Login />} />
+    </Routes>
   );
 };
+
+// const Root = () => {
+//   const [user, setUser] = useState(null);
+//   const navigate = useNavigate();
+//   const location = useLocation(); 
+
+//   useEffect(() => {
+//     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+//       setUser(currentUser);
+      
+//       if (!currentUser && location.pathname !== "/login" && location.pathname !== "/register") {
+//         navigate("/login"); 
+//       }
+
+//     });
+
+  
+
+//     return () => unsubscribe(); 
+//   }, [navigate, location]);
+
+//   return (
+//     <Routes>
+//       {/* <Route path="/" element={<App />} /> */}
+//       <Route path="/" element={user ? <HomePage user={user} /> : <Login />} />
+//       <Route path="/login" element={<Login />} />
+//       <Route path="/register" element={<Register />} /> {/* Always accessible */}
+//       <Route path="/form-workspace" element={user ? <FormWorkspace user={user} /> : <Login />} />
+//       <Route path="/create-workspace/:workspaceId"element={user ? <CreateWorkspacePage user={user} /> : <Login />}/>      
+
+//       </Routes>
+//   );
+// };
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
