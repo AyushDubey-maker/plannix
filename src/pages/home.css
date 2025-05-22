@@ -272,4 +272,8 @@ a.plannix {
     font-size: 14px; /* Smaller button text */
     padding: 3px 8px; /* Reduce button padding */
   }
+
+  .image-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
