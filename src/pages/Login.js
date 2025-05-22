@@ -21,6 +21,13 @@ const Login = () => {
   };
 
   return (
+    <>
+    <header className="header">
+      <div className="app-name">
+        <a className="plannix" href="/">PLANNIX</a>
+      </div>
+    </header>
+
     <div className="form-container-wrapper">
     <div className="form-container">
       <h2>Login</h2>
@@ -45,6 +52,7 @@ const Login = () => {
       </p>
     </div>
     </div>
+        </>
   );
 };
 

@@ -29,6 +29,13 @@ const Register = () => {
     };
 
     return (
+      <>
+      <header className="header">
+      <div className="app-name">
+        <a className="plannix" href="/">PLANNIX</a>
+      </div>
+    </header>
+ 
       <div className="form-container-wrapper">
         <div className="form-container">
           <h2>Register</h2>
@@ -59,6 +66,7 @@ const Register = () => {
           </p>
         </div>
         </div>
+  </>
       );
     };
     
