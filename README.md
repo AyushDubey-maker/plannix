@@ -1,70 +1,160 @@
-# Getting Started with Create React App
+<p align="left">
+  <img src="./public/plannix-favicon.png" width="40" height="40" style="vertical-align: middle;" />
+  <!-- <span style="font-size: 1.5rem; font-weight: bold;">Plannix</span> -->
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Plannix** is a learning project built with **React** and **Firebase** to explore the latest updates in Firebase integration. It provides a minimal, Instagram-like interface where users can design their feed layout in a prototype environment that closely resembles how it would appear to visitors.
 
-## Available Scripts
+Whether you're part of a marketing team planning a campaign or just an Instagram enthusiast who loves experimenting with your layout, Plannix offers a fun and functional way to prototype your profile.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React + Firebase Authentication  
+- Firestore for real-time workspace data storage  
+- Firebase Storage for uploading profile photos  
+- Fully responsive prototype UI resembling Instagram  
+- Ability to create and visualize custom “workspaces” before publishing content  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Use Cases
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Marketing Teams**: Visualize a client’s Instagram layout before actually posting any content  
+- **Instagram Enthusiasts**: Experiment with profile designs just for fun  
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 1. Clone the repository
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+git clone https://github.com/AyushDubey-maker/plannix.git
+cd plannix
+```
 
-### `npm run eject`
+### 2. Install dependencies
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 3. Firebase Setup
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Go to [Firebase Console](https://console.firebase.google.com/) and create a new project  
+2. Enable **Email/Password Authentication** under the Authentication tab  
+3. Create a **Cloud Firestore** database  
+4. Enable **Firebase Storage** for image uploads  
+5. Go to **Project Settings > General > Your Apps** and register a new Web App  
+6. Copy your Firebase config and replace it in `src/firebase.js`:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```js
+// src/firebase.js
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT_ID.appspot.com",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+```
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 💻 Run Locally
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm start
+```
 
-### Code Splitting
+Your app will be available at [http://localhost:3000](http://localhost:3000)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 🌐 Firebase Hosting (Optional)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+To deploy the app using Firebase Hosting:
 
-### Making a Progressive Web App
+1. Install Firebase CLI:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+npm install -g firebase-tools
+```
 
-### Advanced Configuration
+2. Login to Firebase:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+firebase login
+```
 
-### Deployment
+3. Initialize Firebase in your project:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+firebase init
+```
 
-### `npm run build` fails to minify
+- Select **Hosting**  
+- Choose your Firebase project  
+- Set `build` as the public directory  
+- Configure as a single-page app: **Yes**  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+4. Build the React app:
+
+```bash
+npm run build
+```
+
+5. Deploy:
+
+```bash
+firebase deploy
+```
+
+After deployment, your app will be accessible at:
+
+```
+your_firebase_URL
+```
+
+---
+
+## 📁 Folder Structure
+
+```
+src/
+├── components/
+│   └── Loader.js
+├── pages/
+│   ├── HomePage.js
+│   ├── Login.js
+│   ├── Register.js
+│   ├── FormWorkspace.js
+│   └── CreateWorkspacePage.js
+├── firebase.js
+└── index.js
+```
+
+---
+
+## 📸 Live Demo
+
+Once deployed, you can access the live version of Plannix at:
+
+```
+https://plannix.vercel.app/ (My Demo Link)
+```
+
+---
+
+## 🛠 Tech Stack
+
+- React  
+- Firebase (Auth, Firestore, Storage, Hosting)  
+- CSS Modules  
+
+---
+
+
