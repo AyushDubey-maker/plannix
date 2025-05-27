@@ -1,6 +1,5 @@
 <p align="left">
   <img src="./public/plannix-favicon.png" width="40" height="40" style="vertical-align: middle;" />
-  <!-- <span style="font-size: 1.5rem; font-weight: bold;">Plannix</span> -->
 </p>
 
 **Plannix** is a learning project built with **React** and **Firebase** to explore the latest updates in Firebase integration. It provides a minimal, Instagram-like interface where users can design their feed layout in a prototype environment that closely resembles how it would appear to visitors.
